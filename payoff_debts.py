@@ -5,6 +5,7 @@ import numpy
 import math
 from operator import itemgetter
 
+
 class Debt(object):
     def __init__(self, name: str ='', balance: float =0, interest: float=0, payment: float=0):
         self.name = name
@@ -57,7 +58,7 @@ def snowball(debts: list):
     payments_made = 0
     accumlated_money = 0
     debts.reverse()
-    while(len(debts) > 0):
+    while len(debts) > 0:
         debt = debts.pop()
         # Make accumulated payments to this debt.
         print("Adding ${} to next debt's payment.".format(accumlated_money))
@@ -68,7 +69,7 @@ def snowball(debts: list):
         accumlated_money += debt.payment
 
 
-def sort_debts(debts: list=[]) -> list:
+def sort_debts(debts: list) -> list:
     unsorted_debts = []
     for debt in debts:
         unsorted_debts.append((debt, debt.remaining_payments()))
@@ -97,6 +98,7 @@ def main():
     truck = Debt(name='Chev', balance=13000, interest=3, payment=500)
     unsorted_debts = [mortgage, truck]
     snowball(sort_debts(debts=unsorted_debts))
+
 
 if __name__ == '__main__':
     main()
