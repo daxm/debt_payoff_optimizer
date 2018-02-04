@@ -6,11 +6,11 @@ import logging
 unsorted_debts = [
     Debt(name='Chase', balance=203000, interest=4, payment=1400),
     Debt(name='Chev', balance=13500, interest=3, payment=500),
-    Debt(name='Medical', balance=20000, interest=2, payment=300),
+    Debt(name='Medical', balance=20000, interest=.5, payment=300),
     Debt(name='IRS', balance=2000, interest=24, payment=300),
 ]
 
-extra_starting_cash = 500
+extra_starting_cash = 0
 
 
 def main():

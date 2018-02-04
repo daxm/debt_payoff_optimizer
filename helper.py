@@ -2,7 +2,7 @@ import logging
 import numpy
 import math
 from operator import itemgetter
-
+import humanfriendly
 
 class Debt(object):
     def __init__(self, name: str ='', balance: float =0, interest: float=0, payment: float=0):
@@ -53,17 +53,28 @@ Remaining payments = {}
 def snowball(debts: list, addition_funds: int=0):
     """Take the list of sorted Debt objects (quickest to pay off to longest) and describe how to pay them off."""
     payments_made = 0
-
-    while len(debts) > 0:
-        debt = debts.pop()
-        # Make accumulated payments to this debt.
-        print("Adding ${} to next debt's payment.".format(addition_funds))
+    debts.reverse()
+    payment_accumulator = 0
+    for i, debt in enumerate(debts):
+        if i == 1:
+            if addition_funds != 0:
+                print("Adding extra ${} to pay off {}.".format(addition_funds, debt.name))
+            else:
+                print("No extra cash to apply to 1st loan.  Just paying it off.")
+        else:
+            print("Adding extra ${} to pay off {}.".format(addition_funds, debt.name))
         debt.add_to_payment(addition_funds)
         debt.set_balance = numpy.fv(debt.interest, payments_made, debt.payment, debt.balance)
-        print("Pay off {} over {:.1f} payments.".format(debt.name, abs(debt.remaining_payments())))
+        print("\tPay off {} with an additional {:.1f} payments.".format(debt.name, abs(debt.remaining_payments())))
         payments_made += debt.remaining_payments()
+        payment_accumulator += payments_made
         addition_funds = debt.payment
 
+    print("#"*50)
+    payments_made = abs(int(payments_made))
+    print("Total payments from now until debt free: {}".format(payments_made))
+    print("Which is {} from now.".format(humanfriendly.format_timespan(payments_made * 3600 * 24 * 30)))
+    print("#"*50)
 
 def sort_debts(debts: list) -> list:
     unsorted_debts = []
