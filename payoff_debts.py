@@ -2,15 +2,7 @@
 
 from helper import *
 import logging
-
-unsorted_debts = [
-    Debt(name='Chase', balance=203000, interest=4, payment=1400),
-    Debt(name='Chev', balance=13500, interest=3, payment=500),
-    Debt(name='Medical', balance=20000, interest=.5, payment=300),
-    Debt(name='IRS', balance=2000, interest=24, payment=300),
-]
-
-extra_starting_cash = 0
+from userdata import unsorted_debts, extra_starting_cash
 
 
 def main():
