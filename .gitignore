@@ -2,3 +2,4 @@ venv/
 .idea/
 output.log
 userdata.py
+__pycache__
