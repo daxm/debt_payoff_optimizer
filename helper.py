@@ -4,6 +4,7 @@ import math
 from operator import itemgetter
 import humanfriendly
 
+
 class Debt(object):
     def __init__(self, name: str ='', balance: float =0, interest: float=0, payment: float=0):
         self.name = name
@@ -50,7 +51,7 @@ Remaining payments = {}
         self.payment += payment
 
 
-def snowball(debts: list, addition_funds: int=0):
+def snowball(debts: list, addition_funds: float=0.0):
     """Take the list of sorted Debt objects (quickest to pay off to longest) and describe how to pay them off."""
     payments_made = 0
     debts.reverse()
@@ -75,6 +76,7 @@ def snowball(debts: list, addition_funds: int=0):
     print("Total payments from now until debt free: {}".format(payments_made))
     print("Which is {} from now.".format(humanfriendly.format_timespan(payments_made * 3600 * 24 * 30)))
     print("#"*50)
+
 
 def sort_debts(debts: list) -> list:
     unsorted_debts = []

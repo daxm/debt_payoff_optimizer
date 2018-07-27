@@ -1,0 +1,4 @@
+ruamel.yaml
+python-decouple
+humanfriendly
+numpy
