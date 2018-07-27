@@ -1,5 +1,5 @@
 venv/
-.idea/
+.idea
 output.log
 userdata.py
 __pycache__
