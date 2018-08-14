@@ -1,0 +1,13 @@
+---
+debts:
+  - name: "Truck"
+    balance: 1000
+    interest_rate: 4.0
+    payment: 550
+
+  - name: "Mortgage"
+    balance: 203900
+    interest_rate: 4.0
+    payment: 900
+
+extra_starting_cash: 1000
